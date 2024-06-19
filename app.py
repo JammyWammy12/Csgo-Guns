@@ -19,35 +19,20 @@ def render_home_page():  # put application's code here
     return render_template('home.html')
 
 
-@app.route('/t_guns')
-def render_terrorist_page():  # put application's code here
+@app.route('/guns/<table_type>')
+def render_guns_page(table_type):  # put application's code here
 
-    query = "SELECT name FROM csgo_guns WHERE terrorist = TRUE"
+    query = "SELECT id, name, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE team = ? OR all_guns = ?"
+
     conn = create_connect(DATABASE)
     cursor = conn.cursor()
-    cursor.execute(query, )
+    cursor.execute(query, (table_type, table_type))
 
     data_list = cursor.fetchall()
     print(data_list)
 
-    return render_template('t_guns.html', data=data_list)
+    return render_template('guns.html', data=data_list, page_title=table_type)
 
-
-
-
-@app.route('/ct_guns')
-def render_counter_terrorist_page():  # put application's code here
-
-    query = "SELECT name FROM csgo_guns WHERE counter_terrorist = TRUE"
-    conn = create_connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute(query, )
-
-    data_list = cursor.fetchall()
-    print(data_list)
-
-
-    return render_template('ct_guns.html', data=data_list)
 
 
 
