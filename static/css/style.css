@@ -1,5 +1,9 @@
 html {
-    background-color: #333333;
+    height: 100%;
+    margin:0;
+    background: linear-gradient(-45deg, #ff8c00  50%, #3a476a 50%);
+
+
 }
 
 body {

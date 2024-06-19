@@ -1,9 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Counter-Strike Guns - Counter-Terrorist{% endblock %}
-{% block header %}Counter-Terrorist{% endblock %}
+{% block title %}Counter-Strike Guns - Terrorist{% endblock %}
+{% block header %}Terrorist{% endblock %}
 
 {% block content %}
     <h2>Test</h2>
     <p>Test</p>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Is Counter-Terrorist</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
