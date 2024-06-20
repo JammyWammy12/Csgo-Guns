@@ -1,27 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Counter-Strike Guns - Terrorist{% endblock %}
-{% block header %}{{ page_title }}{% endblock %}
-
-
-
 
 
 {% block content %}
-    <h2>Test</h2>
+
+    <h2>
+        {% if table_type == '1' %}
+           Terrorist Guns
+        {% elif table_type == '0' %}
+           Counter-Terrorist Guns
+
+        {% elif table_type == 'all_guns' %}
+           All Guns
+        {% endif %}
+    </h2>
+
     <p>Test</p>
 
     <table>
         <thead>
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Kill Award</td>
-                <td>Kills to Rebuy</td>
-                <td>Damage</td>
-                <td>Clip Size</td>
-                <td>Max Ammo</td>
-
+                <th>Id</th>
+                <th>Name</th>
+                <th>Kill Award</th>
+                <th>Kills to Rebuy</th>
+                <th>Damage</th>
+                <th>Clip Size</th>
+                <th>Max Ammo</th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +39,6 @@
                     <td>{{ row[4] }}</td>
                     <td>{{ row[5] }}</td>
                     <td>{{ row[6] }}</td>
-
-
                 </tr>
             {% endfor %}
         </tbody>

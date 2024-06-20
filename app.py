@@ -31,7 +31,13 @@ def render_guns_page(table_type):  # put application's code here
     data_list = cursor.fetchall()
     print(data_list)
 
-    return render_template('guns.html', data=data_list, page_title=table_type)
+    return render_template('guns.html', data=data_list, table_type=table_type)
+
+
+
+
+
+
 
 
 

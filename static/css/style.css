@@ -27,13 +27,16 @@ header, footer {
 nav {
     background-color: #444444;
     margin: 0;
-    padding: 3px;
+    padding: 10px;
+
 }
 
 nav ul {
     list-style-type: none;
 }
  nav ul li {
+
+
     padding: 3px;
  }
 
@@ -64,7 +67,8 @@ nav ul {
  }
 
  th {
-
+     top: -1px;
+     position: sticky;
      color: #000000;
      background-color: #999999;
  }
