@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 DATABASE = "csgoguns.db"
@@ -26,12 +26,36 @@ def render_guns_page(table_type):  # put application's code here
 
     conn = create_connect(DATABASE)
     cursor = conn.cursor()
-    cursor.execute(query, (table_type, table_type))
+    cursor.execute(query, (table_type, table_type, ))
 
     data_list = cursor.fetchall()
     print(data_list)
 
     return render_template('guns.html', data=data_list, table_type=table_type)
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def render_search_page():
+    look_up = request.form['Search']
+    title = "Search for: '" + look_up + "' "
+    look_up = "%" + look_up + "%"
+
+    query = "SELECT id, name, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE name LIKE ?"
+
+    conn = create_connect(DATABASE)
+    cursor = conn.cursor()
+    cursor.execute(query, (look_up, ))
+
+    data_list = cursor.fetchall()
+    print(data_list)
+
+    return render_template('guns.html', data=data_list, table_type=title)
+
+
+
+
+
+
 
 
 
