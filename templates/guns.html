@@ -1,46 +1,52 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
-
     <h2>
         {% if table_type == '1' %}
            Terrorist Guns
         {% elif table_type == '0' %}
            Counter-Terrorist Guns
-
         {% elif table_type == 'all_guns' %}
            All Guns
+        {% elif table_type == 'Most Damage' %}
+            Most Damage
         {% else %}
             {{ table_type }}
         {% endif %}
     </h2>
 
-    <p>Test</p>
-
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Kill Award</th>
-                <th>Kills to Rebuy</th>
-                <th>Damage</th>
-                <th>Clip Size</th>
-                <th>Max Ammo</th>
+                {% if table_type == 'Most Damage' %}
+                    <th>Name</th>
+                    <th>Damage</th>
+                {% else %}
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Kill Award</th>
+                    <th>Kills to Rebuy</th>
+                    <th>Damage</th>
+                    <th>Clip Size</th>
+                    <th>Max Ammo</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for row in data %}
                 <tr>
-                    <td>{{ row[0] }}</td>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</td>
-                    <td>{{ row[3] }}</td>
-                    <td>{{ row[4] }}</td>
-                    <td>{{ row[5] }}</td>
-                    <td>{{ row[6] }}</td>
+                    {% if table_type == 'Most Damage' %}
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                    {% else %}
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
