@@ -19,7 +19,7 @@ def render_home_page():  # put application's code here
 
 @app.route('/guns/<table_type>')
 def render_guns_page(table_type):  # put application's code here
-    query = "SELECT id, name, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE team = ? OR all_guns = ?"
+    query = "SELECT id, name, cost, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE team = ? OR all_guns = ?"
     conn = create_connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute(query, (table_type, table_type,))
@@ -33,7 +33,7 @@ def render_search_page():
     title = "Search for: '" + look_up + "' "
     look_up = "%" + look_up + "%"
 
-    query = "SELECT id, name, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE name LIKE ?"
+    query = "SELECT id, name, cost, kill_award, kills_to_rebuy, damage, clip_size, max_ammo FROM csgo_guns WHERE name LIKE ?"
     conn = create_connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute(query, (look_up,))
@@ -41,7 +41,8 @@ def render_search_page():
     conn.close()
     return render_template('guns.html', data=data_list, table_type=title)
 
-@app.route('/filter_by_damage')
+
+@app.route('/most_damage')
 def filter_by_damage():
     query = "SELECT id, name,  damage FROM csgo_guns ORDER BY damage DESC"
     conn = create_connect(DATABASE)

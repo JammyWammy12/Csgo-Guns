@@ -7,23 +7,53 @@
 </head>
 <body>
     <header>
-        <img src="/static/logo.png" width="500" height="150" alt="Header graphic">
+         <a href="/"><img class = "center" src="/static/logo.png" width="500" height="150" alt="Header graphic"></a>
         <h2>{% block header %}{% endblock %}</h2>
     </header>
     <nav>
         <ul>
-            <li><a href="/"> <img src="/static/home.png" width="50" height="50" alt="Header graphic"></a></li>
-            <li><a href="/guns/0"><img src="/static/ct.webp" width="50" height="50" alt="Header graphic"></a></li>
-            <li><a href="/guns/1"><img src="/static/t.webp" width="50" height="50" alt="Header graphic"></a></li>
+            <li>
+                <div class="img-wth-text">
+                    <a href="/"><img src="/static/home.png" width="50" height="50" alt="Header graphic"></a>
+                    <span>Home</span>
 
-            <li><a href="/filter_by_damage"><img src="/static/most_damage.png" width="50" height="50" alt="Header graphic"></a>
-            <li><a href="/guns/all_guns"><img src="/static/AK47.png" width="100" height="50" alt="Header graphic"></a></li>
+                </div>
+            </li>
+
+            <li>
+                <div class ="img-wth-text">
+                    <a href="/guns/0"><img src="/static/CT_ICON.png" width="50" height="50" alt="Header graphic"></a>
+                    <span>Counter-Terrorist</span>
+                </div>
+            </li>
 
 
+            <li>
+                <div class ="img-wth-text">
+                    <a href="/guns/1"><img src="/static/terroist_icon.png" width="50" height="50" alt="Header graphic"></a>
+                    <span>Terrorist</span>
+                </div>
+            </li>
 
+            <li>
+                <div class = img-wth-text>
+                    <a href="/most_damage"><img src="/static/damage.png" width="50" height="50" alt="Header graphic"></a>
+                    <span>Most Damage</span>
+                </div>
 
 
             </li>
+            <li>
+                <div class ="img-wth-text">
+                    <a href="/guns/all_guns"><img src="/static/allguns1.png" width="50" height="50" alt="Header graphic"></a>
+                    <span>All Guns</span>
+                </div>
+            </li>
+
+
+
+
+
             <li>
                 <form method="post" action="/search" class="search-bar">
                     <label for="searchbox"></label>
@@ -34,9 +64,12 @@
 
         </ul>
     </nav>
+
     <main>
         {% block content %}
         {% endblock %}
+
     </main>
+
 </body>
 </html>
